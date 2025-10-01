@@ -1,2 +1,73 @@
-# flipbook
-flipbook вуьщ
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flipbook Demo</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* без скролу */
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #flipbook {
+      width: 90vw;   /* займає майже весь екран */
+      height: 90vh;
+    }
+    .page {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .page img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain; /* зберігає пропорції */
+    }
+  </style>
+  <!-- StPageFlip CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/page-flip/dist/page-flip.css" />
+</head>
+<body>
+  <div id="flipbook"></div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/page-flip/dist/page-flip.browser.min.js"></script>
+  <script>
+    const flipbook = document.getElementById("flipbook");
+    const pageFlip = new St.PageFlip(flipbook, {
+      width: 800,
+      height: 1000,
+      size: "stretch",
+      minWidth: 300,
+      maxWidth: 2000,
+      minHeight: 400,
+      maxHeight: 2500,
+      maxShadowOpacity: 0.5,
+      showCover: true,
+      mobileScrollSupport: false,
+    });
+
+    pageFlip.loadFromHTML([
+      '<div class="page"><img src="cover-front.png" alt="Front cover"/></div>',
+      '<div class="page"><img src="page1.png" alt="Page 1"/></div>',
+      '<div class="page"><img src="page2.png" alt="Page 2"/></div>',
+      '<div class="page"><img src="page3.png" alt="Page 3"/></div>',
+      '<div class="page"><img src="page4.png" alt="Page 4"/></div>',
+      '<div class="page"><img src="page5.png" alt="Page 5"/></div>',
+      '<div class="page"><img src="page6.png" alt="Page 6"/></div>',
+      '<div class="page"><img src="page7.png" alt="Page 7"/></div>',
+      '<div class="page"><img src="page8.png" alt="Page 8"/></div>',
+      '<div class="page"><img src="cover-back.png" alt="Back cover"/></div>'
+    ]);
+  </script>
+</body>
+</html>
+
